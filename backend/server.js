@@ -20,10 +20,26 @@ const app = express();
 
 // Security middleware
 app.use(helmet());
+// app.use(cors({
+//   origin: process.env.FRONTEND_URL || 'https://hallooyi-automobile-frontend.onrender.com',
+//   credentials: true
+// }));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://hallooyi-automobile-frontend.onrender.com'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
+
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
