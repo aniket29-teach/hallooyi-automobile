@@ -5,6 +5,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '../backend/.en
 async function seed() {
   const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT,
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'hallooyi_db'
@@ -33,14 +34,16 @@ async function seed() {
 
   // Sample Cars
   const cars = [
-    [1, 'Toyota', 'Camry', 2023, 28500, 'Lagos', 'new', 'Brand new Toyota Camry with full options', 2, 1, 0, 'petrol', 'automatic', 'White', 'approved', true],
-    [2, 'Honda', 'Accord', 2022, 24500, 'Abuja', 'used', 'Well maintained Honda Accord', 2, 2, 15000, 'petrol', 'automatic', 'Black', 'approved', true],
-    [3, 'Tesla', 'Model 3', 2023, 42000, 'Lagos', 'new', 'Electric vehicle with autopilot', 4, 1, 0, 'electric', 'automatic', 'Red', 'approved', true],
-    [4, 'Ford', 'F-150', 2021, 35000, 'Kano', 'used', 'Heavy duty truck', 3, 2, 25000, 'diesel', 'automatic', 'Blue', 'approved', false],
-    [5, 'BMW', 'X5', 2023, 65000, 'Lagos', 'new', 'Luxury SUV', 1, 1, 0, 'petrol', 'automatic', 'Grey', 'pending', false],
-    [6, 'Mercedes', 'C-Class', 2022, 48000, 'Abuja', 'certified', 'Certified pre-owned', 2, 2, 8000, 'petrol', 'automatic', 'Silver', 'approved', true],
-    [7, 'Lexus', 'RX 350', 2023, 52000, 'Lagos', 'new', 'Premium SUV', 1, 1, 0, 'petrol', 'automatic', 'Black', 'approved', true],
-    [8, 'Hyundai', 'Tucson', 2022, 28000, 'Port Harcourt', 'used', 'Compact SUV', 1, 2, 12000, 'petrol', 'automatic', 'White', 'approved', false]
+    [1, 'Toyota', 'Camry', 2023, 28500, 'Lagos', 'new', 'Brand new Toyota Camry with full options', 2, 1, 0, 'petrol', 'automatic', 'White', 'approved', 1],
+    [2, 'Honda', 'Accord', 2022, 24500, 'Abuja', 'used', 'Well maintained Honda Accord', 2, 2, 15000, 'petrol', 'automatic', 'Black', 'approved', 1],
+    [3, 'Tesla', 'Model 3', 2023, 42000, 'Lagos', 'new', 'Electric vehicle with autopilot', 4, 1, 0, 'electric', 'automatic', 'Red', 'approved', 1],
+    [4, 'Ford', 'F-150', 2021, 35000, 'Kano', 'used', 'Heavy duty truck', 3, 2, 25000, 'diesel', 'automatic', 'Blue', 'approved', 0],
+    [5, 'BMW', 'X5', 2023, 65000, 'Lagos', 'new', 'Luxury SUV', 1, 1, 0, 'petrol', 'automatic', 'Grey', 'pending', 0],
+    [6, 'Mercedes', 'C-Class', 2022, 48000, 'Abuja', 'certified', 'Certified pre-owned', 2, 2, 8000, 'petrol', 'automatic', 'Silver', 'approved', 1],
+    [7, 'Lexus', 'RX 350', 2023, 52000, 'Lagos', 'new', 'Premium SUV', 1, 1, 0, 'petrol', 'automatic', 'Black', 'approved', 1],
+    [8, 'Hyundai', 'Tucson', 2022, 28000, 'Port Harcourt', 'used', 'Compact SUV', 1, 2, 12000, 'petrol', 'automatic', 'White', 'approved', 1],
+    [9, 'Kia', 'Seltos', 2022, 27000, 'Ibadan', 'used', 'Another compact SUV', 1, 2, 13000, 'petrol', 'automatic', 'Blue', 'approved', 1],
+    [10, 'Toyota', 'RAV4', 2023, 32000, 'Enugu', 'new', 'Brand new Toyota RAV4', 1, 1, 0, 'petrol', 'automatic', 'Red', 'approved', 1]
   ];
 
   for (const car of cars) {

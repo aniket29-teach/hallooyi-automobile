@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Fuel, Settings, Calendar } from 'lucide-react';
+import { BASE_URL } from '../config';
 
 export default function CarCard({ car }) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-100">
       <div className="h-48 bg-gray-200 relative">
         {car.car_image || car.images?.[0]?.image_url ? (
-          <img src={`http://localhost:5000${car.car_image || car.images?.[0]?.image_url}`} alt={car.model} className="w-full h-full object-cover" />
+          <img src={`${BASE_URL}${car.car_image || car.images?.[0]?.image_url}`} alt={car.model} className="w-full h-full object-cover" />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-400">No Image</div>
         )}

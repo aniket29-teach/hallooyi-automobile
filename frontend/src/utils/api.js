@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { BASE_URL } from '../config';
 
 const api = axios.create({
-  baseURL: 'https://hallooyi-automobile.onrender.com/api',
+  baseURL: `${BASE_URL}/api`,
+  // baseURL: 'http://localhost:5000/api',
+
 });
 
 api.interceptors.request.use((config) => {

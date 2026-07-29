@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import { BASE_URL } from '../config';
 import { MapPin, Fuel, Settings, Calendar, Gauge, Palette } from 'lucide-react';
 
 export default function CarDetails() {
@@ -51,12 +52,12 @@ export default function CarDetails() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-4">
           <div className="h-96 bg-gray-200 rounded-xl overflow-hidden">
-            <img src={`http://localhost:5000${car.images?.[0]?.image_url || ''}`} alt={car.model} className="w-full h-full object-cover" />
+            <img src={`${BASE_URL}${car.images?.[0]?.image_url || ''}`} alt={car.model} className="w-full h-full object-cover" />
           </div>
           <div className="grid grid-cols-4 gap-2">
             {car.images?.map((img, i) => (
               <div key={i} className="h-20 bg-gray-200 rounded-lg overflow-hidden">
-                <img src={`http://localhost:5000${img.image_url}`} className="w-full h-full object-cover" alt="" />
+                <img src={`${BASE_URL}${img.image_url}`} className="w-full h-full object-cover" alt="" />
               </div>
             ))}
           </div>
